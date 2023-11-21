@@ -32,7 +32,7 @@ function setup() {
 }
 
 function draw() {
-  background(200);
+  background(184, 241, 192);
 
   // Dibuja las líneas verticales para dividir el canvas en 4 columnas
   for (let i = 1; i < 4; i++) {
@@ -72,7 +72,7 @@ function draw() {
       }
 
       // Dibuja las tiles
-      fill(0, 0, 0); // Establece el color de las tiles (en este caso, azul)
+      fill(255, 67, 48); // Establece el color de las tiles (en este caso, azul)
       rect(tiles[i].x - tiles[i].width / 2, tiles[i].y, tiles[i].width, tiles[i].height);
     }
 

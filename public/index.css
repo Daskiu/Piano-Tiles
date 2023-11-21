@@ -4,7 +4,7 @@ body {
     justify-content: center;
     height: 100vh;
     margin: 0;
-    background-color: #f0f0f0;
+    background-color: #FF4330;
     font-family: 'Arial', sans-serif;
     position: relative;
   }
@@ -40,4 +40,12 @@ body {
     font-size: 40px;
     color: #e74c3c;
     font-weight: bold;
+  }
+
+  #logo {
+    position: fixed;
+    top: -20px;
+    right: 40px;
+    width: 200px;
+    height: 200px;
   }
