@@ -1,4 +1,5 @@
-let socket;
+const socket = io()
+
 let tiles = [];
 let columnWidth;
 let tileHeight = 100;
@@ -15,6 +16,7 @@ let firstIncreasedFallSpeed = 8; // Primera velocidad de caída aumentada
 let secondIncreasedFallSpeed = 12; // Segunda velocidad de caída aumentada
 let gameOver = false;
 let gameCompleted = false;
+let arduinoKey = null;
 
 function setup() {
   createCanvas(400, 800);
@@ -26,10 +28,15 @@ function setup() {
   scoreDisplay.style('font-size', '20px');
   scoreDisplay.id('score-box');
 
-  socket = io();
-
   startTime = millis(); // Inicia el temporizador
+  
 }
+
+socket.on('input', (input) =>{
+  arduinoKey = input.key.toString();
+    keyPressedd();
+    arduinoKey = null;
+})
 
 function draw() {
   background(184, 241, 192);
@@ -119,6 +126,33 @@ function keyPressed() {
       }
     }
   }
+
+  // Manejar eventos del mouse, teclado, etc.
+function keyPressedd() {
+  // Verifica si el juego está en curso
+  if (!gameOver) {
+    let keyMatched = false;
+
+    // Verifica si se ha presionado una tecla asignada a una columna
+    for (let i = 0; i < tiles.length; i++) {
+      console.log("arduino", arduinoKey)
+      console.log("tiles", tiles[i].column)
+      if (arduinoKey == tiles[i].column) {
+        console.log("Hi")
+        // Realiza la acción correspondiente
+        tiles.splice(i, 1); // Elimina la tile
+        score++; // Aumenta la puntuación
+        keyMatched = true;
+        break;
+      }
+    }
+
+    // Si la tecla presionada no coincide con ninguna columna, resta un punto
+    if (!keyMatched) {
+      score--;
+    }
+  }
+}
 
 function generateTiles() {
   // Verifica si ha pasado suficiente tiempo desde la generación de la última tile
