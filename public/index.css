@@ -49,3 +49,9 @@ body {
     width: 200px;
     height: 200px;
   }
+  
+  #audio{
+    display: flex;
+    position: absolute;
+    margin-top: 870px;
+  }

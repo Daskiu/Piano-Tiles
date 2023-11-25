@@ -11,7 +11,7 @@ const io = socketIO(server);
 app.use(express.static('public'));
 
 const protocolConfiguration = {
-  path: 'COM4',
+  path: 'COM3',
   baudRate: 9600
 }
 

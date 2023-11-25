@@ -131,7 +131,7 @@ function keyPressed() {
     }
   }
 
-  // Manejar eventos del mouse, teclado, etc.
+  // Manejar eventos del Arduino
 function keyPressedd() {
   // Verifica si el juego está en curso
   if (!gameOver) {
